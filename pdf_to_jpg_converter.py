@@ -20,8 +20,15 @@ from PIL import Image
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 
-# Set up poppler path for Windows
-POPPLER_PATH = os.path.join(os.path.dirname(__file__), "poppler-23.01.0", "Library", "bin")
+# Set up poppler path - handle both Windows and Docker/Linux environments
+def get_poppler_path():
+    # Check if running in Docker/Linux (poppler-utils installed system-wide)
+    if os.path.exists('/usr/bin/pdftoppm'):
+        return None  # Use system poppler
+    # Windows - use bundled poppler
+    return os.path.join(os.path.dirname(__file__), "poppler-23.01.0", "Library", "bin")
+
+POPPLER_PATH = get_poppler_path()
 
 def pdf_first_page_to_jpg(pdf_path, output_dir=None, dpi=200, quality=95, scale_factor=0.6):
     """

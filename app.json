@@ -1,0 +1,18 @@
+{
+  "name": "PDF to JPG Converter",
+  "description": "A web application to convert PDF files to JPG images",
+  "keywords": ["pdf", "jpg", "converter", "python", "flask"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "FLASK_ENV": {
+      "value": "production"
+    }
+  }
+}

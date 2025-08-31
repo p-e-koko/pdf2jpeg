@@ -1,2 +1,5 @@
+# Docker deployment requirements
 pdf2image==1.17.0
 pillow==11.3.0
+flask
+werkzeug

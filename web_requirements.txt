@@ -1,0 +1,7 @@
+# Existing requirements for PDF conversion
+pdf2image
+pillow
+
+# Web framework requirements
+flask
+werkzeug
